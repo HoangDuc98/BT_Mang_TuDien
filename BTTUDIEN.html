@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="keyword" placeholder="nhập vào đây"/>
+<button onclick="getResult()">Dịch</button>
+<p id="result"></p>
+<script>
+    let english =['rice', 'cake', 'tea', 'lemon']
+    let vietnam =['cơm', 'bánh', 'trà', 'chanh']
+    let keyword ="";
+    function indexOf(keyword, arr) {
+        let index=-1;
+        for (let e in arr ){
+            if(arr[e]== keyword) index = e;
+        }
+        return parseInt(index);
+    }
+    function translate(keyword) {
+        let result = "";
+        let index = indexOf(keyword, english)
+        if (index != -1){
+            result = vietnam[index];
+        }
+        else {
+            result = "Không tìm thấy"
+        }
+        return result;
+    }
+    function getResult() {
+        let keyword = document.getElementById("keyword").value;
+        let result = translate(keyword);
+        document.getElementById("result").innerText = result;
+    }
+</script>
+</body>
+</html>
